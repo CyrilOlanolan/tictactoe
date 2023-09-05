@@ -174,3 +174,8 @@ for (let row of table) {
     cell.addEventListener("click", addSymbol);
   }
 }
+
+// Adds click listener to the reset button
+document.getElementsByClassName("reset")[0].addEventListener("click", () => {
+  resetGame();
+});
