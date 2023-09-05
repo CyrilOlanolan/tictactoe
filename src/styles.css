@@ -1,0 +1,67 @@
+:root {
+  --table-cell_size: 24vmin;
+  --border-radius: 4vmin;
+  --border-width: 1.5vmin;
+  --icon-size: 18vmin;
+
+  --color-background: #264653;
+  --color-foreground: #f4a261;
+  --color-border: #2a9d8f;
+  --color-circle: #e9c46a;
+  --color-x: #e76f51;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-family: "Circular Std", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--color-background, #264653);
+}
+
+.playground {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playground__table-wrapper {
+  border-radius: var(--border-radius, 1.5rem);
+  border: solid var(--border-width, 0.75rem) var(--color-border, #2a9d8f);
+}
+
+.playground .playground__table {
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+.playground .playground__table .row .cell {
+  border: solid var(--border-width, 0.75rem) var(--color-border, #2a9d8f);
+  height: var(--table-cell_size, 14rem);
+  width: var(--table-cell_size, 14rem);
+  text-align: center;
+  cursor: pointer;
+}
+
+.playground__icon--x,
+.playground__icon--circle {
+  height: var(--icon-size, 10rem);
+  width: var(--icon-size, 10rem);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.playground .playground__table .row .cell--winner {
+  background-color: var(--color-border, #2a9d8f);
+  transition: ease-in-out 0.3s;
+}
