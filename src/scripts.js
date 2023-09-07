@@ -67,30 +67,23 @@ function addSymbol(event) {
     : oCellIndexes.push(parseInt(cellIndex));
 
   // checks if there is a winner
-  checkWinner(player);
+  let isWinner = checkWinner(player);
 
   // checks if it should be reset
-  checkReset();
+  !isWinner && checkReset();
 
   // changes player
   player = player === "X" ? "O" : "X";
 }
 
-function checkReset() {
-  if (xCellIndexes.length + oCellIndexes.length === 9) {
-    setTimeout(() => {
-      alert("It's a tie!");
-      resetGame();
-    });
-  }
-}
+function checkReset() {}
 
 /**
  * Accepts a player and checks if they are a winner.
  * More efficient than checking each x and y cell indexes
  *
  * @param {"X" | "O"} player
- * @returns void
+ * @returns {Boolean}
  */
 function checkWinner(player) {
   // checks if player is a winner
@@ -104,7 +97,8 @@ function checkWinner(player) {
       setTimeout(() => {
         alert(`X is the winner!`);
         resetGame();
-      }, 500);
+      }, 300);
+      return true;
     } else if (
       // checks for Y cells
       player === "O" &&
@@ -114,11 +108,13 @@ function checkWinner(player) {
       setTimeout(() => {
         alert(`O is the winner!`);
         resetGame();
-      }, 500);
+      }, 300);
+      return true;
     } else {
       continue;
     }
   }
+  return false;
 }
 
 function styleWinnigCells(combination) {
@@ -143,6 +139,8 @@ function resetGame() {
 }
 
 // = = = = = = = = = = MAIN = = = = = = = = = =
+
+let cells = [];
 
 /**
  * @type {String[]}
@@ -172,6 +170,7 @@ for (let row of table) {
   for (let cell of row.children) {
     // adds click listener to the cell
     cell.addEventListener("click", addSymbol);
+    cells.push(cell);
   }
 }
 
