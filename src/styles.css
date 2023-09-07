@@ -7,6 +7,7 @@
   --color-background: #264653;
   --color-foreground: #f4a261;
   --color-border: #2a9d8f;
+  --color-red: #911704;
   --color-circle: #e9c46a;
   --color-x: #e76f51;
   --color-white: #ffffff;
@@ -76,7 +77,7 @@ body {
 }
 
 .playground .playground__table .row .cell--winner {
-  background-color: var(--color-border, #2a9d8f);
+  background-color: var(--color-red, #e03d23);
   transition: ease-in-out 0.3s;
 }
 

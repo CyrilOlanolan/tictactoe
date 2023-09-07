@@ -69,11 +69,6 @@ function addSymbol(event) {
   // checks if there is a winner
   checkWinner(player);
 
-  // console.log(isWinner);
-
-  // checks if it should be reset
-  // !isWinner && checkReset();
-
   // changes player
   player = player === "X" ? "O" : "X";
 }
