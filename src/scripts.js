@@ -67,16 +67,16 @@ function addSymbol(event) {
     : oCellIndexes.push(parseInt(cellIndex));
 
   // checks if there is a winner
-  let isWinner = checkWinner(player);
+  checkWinner(player);
+
+  // console.log(isWinner);
 
   // checks if it should be reset
-  !isWinner && checkReset();
+  // !isWinner && checkReset();
 
   // changes player
   player = player === "X" ? "O" : "X";
 }
-
-function checkReset() {}
 
 /**
  * Accepts a player and checks if they are a winner.
@@ -98,7 +98,7 @@ function checkWinner(player) {
         alert(`X is the winner!`);
         resetGame();
       }, 300);
-      return true;
+      return;
     } else if (
       // checks for Y cells
       player === "O" &&
@@ -109,12 +109,18 @@ function checkWinner(player) {
         alert(`O is the winner!`);
         resetGame();
       }, 300);
-      return true;
+      return;
     } else {
       continue;
     }
   }
-  return false;
+
+  if (xCellIndexes.length + oCellIndexes.length === 9) {
+    setTimeout(() => {
+      alert("It's a tie!");
+      resetGame();
+    }, 300);
+  }
 }
 
 function styleWinnigCells(combination) {
